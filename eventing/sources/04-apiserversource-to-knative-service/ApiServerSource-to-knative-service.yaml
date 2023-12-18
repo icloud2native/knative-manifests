@@ -1,0 +1,15 @@
+apiVersion: sources.knative.dev/v1
+kind: ApiServerSource
+metadata:
+  name: pods-event
+spec:
+  serviceAccountName: pod-watcher
+  mode: Reference
+  resources:
+  - apiVersion: v1
+    kind: Pod
+  sink:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: event-display

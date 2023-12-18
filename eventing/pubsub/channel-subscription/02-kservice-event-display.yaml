@@ -1,0 +1,31 @@
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: event-display01
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/min-scale: "1"
+    spec:
+      containers:
+        - image: ikubernetes/event_display
+          ports:
+            - containerPort: 8080
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: event-display02
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/min-scale: "1"
+    spec:
+      containers:
+        - image: ikubernetes/event_display
+          ports:
+            - containerPort: 8080
+
